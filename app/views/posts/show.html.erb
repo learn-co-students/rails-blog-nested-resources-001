@@ -11,5 +11,16 @@
   <% end %>
 </ul>
 
+<ol>
+  <% @post.comments.each do |comment| %>
+  <li><%= comment.content %></li>
+  <% end %>
+</ol>
+
+<form action="/comments/<%= @post.id %>" method="POST">
+  <input type="text" id="Content" name="comment[content]">
+  <input type="submit" value="Create Comment">
+</form>
+
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
